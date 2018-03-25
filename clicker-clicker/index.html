@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAMdLm1c26BwQiKmizzHspMLnQ9DTwF220",
+        authDomain: "clicker-game-b6b68.firebaseapp.com",
+        databaseURL: "https://clicker-game-b6b68.firebaseio.com",
+        storageBucket: "clicker-game-b6b68.appspot.com",
+        messagingSenderId: "80302255615"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Clicker Clicker - kmh.zone</title>
+  </head>
+  <body>
+    <div id="game">
+      <table id="counters">
+        <tr>
+          <td class="countersCell" id="clicksCell">
+            <div class="counter" id="clicksCounter">Clicks: <span id="clicks">0</span></div>
+          </td>
+          <td class="countersCell" id="trayCell">
+            <div class="counter" id="tray"><span id="availableLabel">Available: <span id="available">0</span></span></div>
+          </td>
+          <td class="countersCell" id="cpsCell">
+            <div class="counter" id="cpsCounter">Clicks per second: <span id="cps">0</span></div>
+          </td>
+        </tr>
+      </table>
+      <table id="buttons">
+        <tr class="buttonRow">
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=0></div>
+          </td>
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=1></div>
+          </td>
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=2></div>
+          </td>
+        </tr>
+        <tr class="buttonRow">
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=3></div>
+          </td>
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=4>
+              <button data-id=6 class="button droppable" onmouseup="addClicks(1)">Click Here</button>
+            </div>
+          </td>
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=5></div>
+          </td>
+        </tr>
+        <tr class="buttonRow">
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=6></div>
+          </td>
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=7></div>
+          </td>
+          <td class="buttonGrid">
+            <div class="buttonContainer" data-id=8></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="tabs">
+      <ul>
+        <li><a href="#store">Store</a></li>
+        <li><a href="#account">Account</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <div id="store">
+        <table>
+          <tr class="storeRow">
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="0">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td>CPS: <span class="cpsNum"></span></td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(0)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="1">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td>CPS: <span class="cpsNum"></span></td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(1)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="2">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td>CPS: <span class="cpsNum"></span></td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(2)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="storeRow">
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="3">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td><span class="cpsNum"></span>x</td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(3)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="4">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td><span class="cpsNum"></span>x</td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(4)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="5">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td><span class="cpsNum"></span>x</td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(5)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="storeRow">
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="6">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td>Multiplier: <span class="cpsNum"></span></td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(6)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="7">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td>Multiplier: <span class="cpsNum"></span></td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(7)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+            <td class="storeItem">
+              <table class="itemInfo">
+                <tr class="itemInfoRow" data-id="8">
+                  <td><img class="itemImg"></img><span class="name"></span></td><td>Multiplier: <span class="cpsNum"></span></td><td>Cost: <span class="cost"></span></td><td>Owned: <span class="owned">0</span></td><td><button class="buy" onclick="buy(8)">Buy</button></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="account">
+        <h4>Current user: <span id="currentuser"></span></h4>
+        <label for="usernameIn">Username: </label><input type="text" id="usernameIn"></input><br><br>
+        <label for="passwordIn">Password: </label><input type="password" id="passwordIn"></input><br><br>
+        <button onclick="login()">Login</button> <button onclick="create()">Create Account</button> <button onclick="signOut()">Sign Out</button> <button onclick="save()">Save</button> <button onclick="clearSaveData()">Clear Save Data</button>
+      </div>
+      <div id="about">Here is the about page.</div>
+    </div>
+    <script src="clicker.js" type="text/javascript"></script>
+  </body>
+</html>

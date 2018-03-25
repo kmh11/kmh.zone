@@ -1,0 +1,142 @@
+#game {
+  height: 70vh;
+  width: 100%;
+}
+
+#clicksCounter {
+  margin-top: 1em;
+  margin-left: 1em;
+  float: left;
+}
+
+#cpsCounter {
+  float: right;
+  margin-top: 1em;
+  margin-right: 1em;
+}
+
+.itemInfoRow, .itemInfo {
+  width: 100%;
+}
+
+.itemInfoRow > td {
+  margin: auto;
+  text-align: center;
+}
+
+#counters {
+  width: 100%;
+}
+
+#clicksCell {
+  margin: auto;
+  width: 33.333%;
+}
+
+#cpsCell {
+  margin: auto;
+  width: 33.333%;
+}
+
+#trayCell {
+  margin: auto;
+  width: 33.333%;
+}
+
+#tray {
+  margin-left: 1.5em;
+  height: 2.2em;
+  margin-top: 1em;
+}
+
+#availableLabel {
+  position: relative;
+  top: 20%;
+  padding-left: 2em;
+}
+
+.itemImg {
+  height: 1.5em;
+  float: left;
+  margin-right: 1em;
+}
+
+.draggable {
+  position: absolute;
+  height: 2em;
+}
+
+.counter {
+  font-size: 1.5em;
+  text-align: center;
+  border: 0.2em solid black;
+  padding: 0.2em;
+  border-radius: 0.2em;
+}
+
+.storeRow {
+  width: 100%;
+}
+
+.storeItem {
+  width: 53vw;
+  text-align: center;
+  border: 0.1em solid black;
+  padding: 0.5em;
+}
+
+.name {
+  float: left;
+  margin-top: 0.15em;
+}
+
+.buy {
+  float: right;;
+}
+
+.button, .ad {
+  height: 10em;
+  width: 25em;
+}
+
+.ad {
+  text-align: center;
+  position: relative;
+  margin: auto;
+  border: 0.2em solid black;
+}
+
+.aImage, .newsImage {
+  height: 5em;
+  width: 10em;
+}
+
+.newsImage {
+  position: absolute;
+  right: 30%;
+  bottom: 0.5em;
+}
+
+#buttons {
+  width: 100%;
+  height: 85%;
+}
+
+.buttonRow {
+  width: 100%;
+  height: 28.3333333%;
+}
+
+.buttonGrid {
+  width: 33.3333%;
+}
+
+.buttonContainer {
+  text-align: center;
+}
+
+html, body {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}

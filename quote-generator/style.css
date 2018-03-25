@@ -1,0 +1,89 @@
+label, select {
+  font-size: 3rem;
+  margin: 0 auto;
+  position: relative;
+  bottom: 0.1rem
+}
+button, select {
+  font-family: inherit;
+}
+#sourceText {
+  resize: none;
+  height: 40rem;
+  width: 40rem;
+  width: 80vw;
+  display: block;
+  margin: 0 auto;
+}
+#makeSentence {
+  display: block;
+  margin: 0.5rem auto;
+  font-size: 3rem;
+}
+textarea {
+  background-color: #fffcbf;
+}
+.centerLine {
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  font-size: 5rem;
+  margin-top: -0.001rem;
+}
+h2 {
+  text-align: center;
+  margin-top: -2.5rem;
+  font-weight: normal;
+}
+#sanity {
+  position: relative;
+  bottom: 0.5rem;
+  width: 12em;
+}
+#sanityLabel {
+  position: relative;
+  bottom: 0.3rem;
+  width: 2rem;
+}
+.quotationmark {
+  font-family: sutro-deluxe-primary;
+  font-size: 10rem;
+}
+#quote {
+  font-family: balboa-plus-fill;
+  font-size: 5rem;
+  text-align: center;
+  position: fixed;
+  bottom: 50%;
+  transform: translateY(50%)
+}
+#backbutton {
+  border: 0.1rem solid black;
+  border-radius: 15px;
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  padding: 0.2rem;
+  float: right;
+  margin-top: 0.3rem;
+  margin-right: 0.3rem;
+}
+body {
+  background-color: #fcf88f;
+  font-family: "vera-sans";
+}
+.quoteright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+.quoteleft {
+  float: left;
+  vertical-align: top;
+}
+footer {
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 1rem;
+}

@@ -1,0 +1,1197 @@
+/*#region Size */
+/*#endregion */
+/*#region Colors */
+/*#endregion */
+/*#region fonts*/
+/* Mixin the hide all mobile devices, that includes smartphones and tablets */
+/* THIS MIXIN IS DEPRECATED
+It is left to not to cause regression conflicts. Please use .u-retina() mixin */
+/* Dedicated mixin for retina images*/
+/** Imports of all styles in header desktop/tablet. **/
+/** Layout elements **/
+/** Layout - main layout and main rows for 2015JulyHeader desktop/tablet. **/
+/** External Dependencies **/
+/** Variables for header desktop/tablet **/
+/** Variables for 2015JulyHeader desktop/tablet **/
+/** ======= COLORS ======= **/
+.dictionary-header,
+.thesaurus-header {
+  -webkit-transition: -webkit-transform 0.4s ease;
+  -moz-transition: -moz-transform 0.4s ease;
+  -o-transition: -o-transform 0.4s ease;
+  transition: -webkit-transform 0.4s ease,-moz-transform 0.4s ease,-o-transform 0.4s ease,transform 0.4s ease;
+  background-color: #3c7bbe;
+  position: relative;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+}
+.dictionary-header a,
+.thesaurus-header a,
+.dictionary-header [class*='dicticon-header-'],
+.thesaurus-header [class*='dicticon-header-'],
+.dictionary-header li,
+.thesaurus-header li {
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  color: #345566;
+}
+.dictionary-header .wotd-italic,
+.thesaurus-header .wotd-italic {
+  font-style: italic;
+}
+@media (min-width: 1200px) {
+  .dictionary-header,
+  .thesaurus-header {
+    position: relative;
+    top: 0;
+  }
+}
+.header-nav-row {
+  background: #ffffff;
+  overflow: auto;
+  height: 40px;
+}
+.header-subnav-row {
+  background: #3c7bbe;
+  overflow: auto;
+}
+.header-search-row {
+  background: #3c7bbe;
+  padding: 15px 0 18px 0;
+}
+.header-search-row img {
+  float: left;
+  margin: 0 20px 0 0;
+}
+.header-wrapper-row {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.header-wrapper-row:before,
+.header-wrapper-row:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.header-wrapper-row:after {
+  clear: both;
+}
+@media (min-width: 992px) {
+  .header-wrapper-row {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .header-wrapper-row {
+    width: 1170px;
+  }
+}
+/** Component elements **/
+/** Styles component for hamburger button **/
+/** Variables for header desktop/tablet **/
+/** Variables for dictionary iconfont **/
+@font-face {
+  font-family: "dictionary-fonticon";
+  src: url("/web/20171002095051im_/http://static.sfdict.com/sitecore/fonts/dictionary-fonticon/dictionary-font.eot");
+  src: url("/web/20171002095051im_/http://static.sfdict.com/sitecore/fonts/dictionary-fonticon/dictionary-font.eot#iefix") format("embedded-opentype"), url("/web/20171002095051im_/http://static.sfdict.com/sitecore/fonts/dictionary-fonticon/dictionary-font.ttf") format("truetype"), url("/web/20171002095051im_/http://static.sfdict.com/sitecore/fonts/dictionary-fonticon/dictionary-font.woff") format("woff"), url("/web/20171002095051im_/http://static.sfdict.com/sitecore/fonts/dictionary-fonticon/dictionary-font.svg#Dicticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="dicticon-"],
+[class*=" dicticon-"]:before {
+  font-family: "dictionary-fonticon";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/** External Dependencies **/
+.dicticon-hamburger-menu {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  float: left;
+  position: absolute;
+  display: block;
+  z-index: 6;
+  background: #ffffff;
+  font-size: 24px;
+}
+.dicticon-hamburger-menu.slide-element {
+  position: absolute;
+}
+@media (min-width: 1200px) {
+  .dicticon-hamburger-menu.slide-element {
+    position: fixed;
+    top: 0;
+  }
+}
+.dicticon-hamburger-menu:hover {
+  background: #f5f5f5;
+  color: #aaaaaa;
+}
+.dicticon-hamburger-menu:before {
+  content: "\e615";
+}
+/** Styles component - main tab navigation in header-nav-row for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+/** Import external dependencies **/
+.header-main-nav {
+  float: left;
+  margin: 0;
+  padding: 0 0 0 40px;
+  list-style-type: none;
+}
+.header-main-nav > li {
+  float: left;
+  min-width: 169px;
+  background-color: #f5f5f5;
+}
+.header-main-nav > li:hover {
+  background-color: #e2e2e2;
+}
+.header-main-nav > li:last-child {
+  border-right: 1px solid #aaaaaa;
+}
+.header-main-nav > li > a {
+  display: inline-block;
+  padding: 11px 26px;
+  font: 16px Helvetica, sans-serif;
+  line-height: 18px;
+  font-style: italic;
+  font-weight: bold;
+  color: #666666;
+  text-decoration: none;
+}
+.header-main-nav .nav-active {
+  background-color: #3c7bbe;
+  border-right: none;
+}
+.header-main-nav .nav-active:hover {
+  background-color: #3c7bbe;
+  border-right: none;
+}
+.header-main-nav .nav-active > a {
+  color: #ffffff;
+}
+@media (max-width: 1200px) {
+  .header-main-nav {
+    background-color: #3c7bbe;
+  }
+}
+/** Component styles - header social links (dictionary-fonticon) for 2015JulyHeader tablet/desktop **/
+/** External Dependencies **/
+/** Variables for header desktop/tablet **/
+/** Variables for dictionary iconfont **/
+.header-social-links {
+  float: right;
+  padding: 9px 14px 9px 22px;
+  margin: 0;
+  list-style-type: none;
+  cursor: pointer;
+}
+.header-social-links:hover .dicticon-header-social-facebook {
+  color: #3b5998;
+}
+.header-social-links:hover .dicticon-header-social-twitter {
+  color: #55acee;
+}
+.header-social-links:hover .dicticon-header-social-googleplus {
+  color: #dd4b39;
+}
+.header-social-links:hover .dicticon-header-social-instagram {
+  color: #3f729b;
+}
+@media (max-width: 992px) {
+  .header-social-links {
+    display: none;
+  }
+}
+.header-nav-row [class*="dicticon-header-"] {
+  float: left;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  font-size: 22px;
+  color: #555555;
+  text-decoration: none;
+}
+.dicticon-header-social-facebook:before {
+  content: "\e605";
+}
+.dicticon-header-social-twitter:before {
+  content: "\e608";
+}
+.dicticon-header-social-googleplus:before {
+  content: "\e60b";
+}
+.dicticon-header-social-instagram:before {
+  content: "\e60a";
+}
+/** Component styles - apps link in .header-nav-row for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+/** Variables for dictionary iconfont **/
+/** Import external dependencies **/
+.header-apps-links {
+  float: right;
+  padding: 1px 14px 1px 22px;
+  margin: 8px 0;
+  border-right: 1px solid #e2e2e2;
+  line-height: 22px;
+  color: #555555;
+  font-size: 11px;
+}
+.header-apps-links:focus {
+  text-decoration: none;
+}
+.header-apps-links:hover {
+  color: #6cb746;
+  text-decoration: none;
+}
+.header-apps-links:hover [class*="dicticon-header-app-"] {
+  color: #6cb746;
+}
+.header-apps-links .dicticon-header-app-android:before {
+  content: "\e60e";
+}
+.header-apps-links .dicticon-header-app-ios:before {
+  content: "\e60d";
+}
+/** Styles component - login navigation in header-nav-row for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+/** Import external dependencies **/
+.header-login-nav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  float: right;
+}
+.header-login-nav > li {
+  float: left;
+}
+.header-login-nav li.account > a {
+  padding: 0 14px 0 22px;
+  margin: 8px 0;
+  background: transparent;
+  border-left: 1px solid #e2e2e2;
+  border-bottom: none;
+  line-height: 24px;
+  color: #555555;
+}
+.header-login-nav a {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #555555;
+  font: 10px Verdana;
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 24px;
+}
+.header-login-nav a:hover {
+  background: #666666;
+  text-decoration: none;
+  color: #ffffff;
+}
+.header-login-nav .user-logged-in {
+  display: none;
+}
+.loggedin .ham-nav .user-logged-in,
+.loggedin .dictionary-header .user-logged-in,
+.loggedin .thesaurus-header .user-logged-in {
+  display: block;
+}
+.loggedin .ham-nav .user-logged-out,
+.loggedin .dictionary-header .user-logged-out,
+.loggedin .thesaurus-header .user-logged-out {
+  display: none;
+}
+/** Styles component for subnavigation **/
+/** Variables for header desktop/tablet **/
+/** Import external dependencies **/
+.header-subnav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: auto;
+  min-height: 1px;
+  margin-left: 200px;
+}
+.header-subnav > :first-child a {
+  padding-left: 0;
+}
+.header-subnav > li {
+  float: left;
+}
+.header-subnav a {
+  display: inline-block;
+  font-size: 15px;
+  color: #ffffff;
+  padding: 15px 15px 0 15px;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .header-subnav a {
+    font-size: 13px;
+  }
+}
+.header-subnav > li > a:hover {
+  color: #66cef6;
+  text-decoration: none;
+}
+/** Component styles - search wrapper, input, button in header-search-row for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+/** Variables for dictionary iconfont **/
+/** Import external dependencies **/
+.header-search-wrapper {
+  position: relative;
+  z-index: 7;
+  float: left;
+  display: inline-block;
+  padding: 8px 2px;
+  background: #f8f8f8;
+  /* === styles for input === */
+  /* === submit button === */
+}
+.header-search-wrapper .search-input {
+  float: left;
+  display: block;
+  width: 292px;
+  height: 30px;
+  padding: 0 8px;
+  margin-right: 1px;
+  border: 1px solid #e2e2e2;
+  min-height: 1px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #666666;
+  transition: border-color, box-shadow 0.2s, 0.2s ease-in-out, ease-in-out;
+}
+.header-search-wrapper .search-input:hover,
+.header-search-wrapper .search-input:focus {
+  border-color: #55acee;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+@media (min-width: 1200px) {
+  .header-search-wrapper .search-input {
+    width: 422px;
+  }
+}
+.header-search-wrapper .dicticon-search-submit {
+  float: left;
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  padding: 2px 8px;
+  background: #f8f8f8;
+  border: none;
+  font-family: "dictionary-fonticon";
+  color: #3f729b;
+  font-size: 24px;
+}
+.header-search-wrapper .dicticon-search-submit:before {
+  content: "\e614";
+}
+.header-search-wrapper .filter-hidden {
+  display: none;
+}
+/** Component styles - filter navigation in search box for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+/** Variables for dictionary iconfont **/
+/** External Dependencies **/
+.search-filter-nav {
+  float: left;
+  cursor: pointer;
+}
+.search-filter-nav .filter-item-active {
+  float: right;
+  min-width: 92px;
+  display: block;
+  padding-left: 8px;
+  color: #555555;
+  font: 14px Verdana;
+  line-height: 30px;
+}
+.search-filter-nav .dicticon-filter {
+  float: right;
+  padding: 1px 3px;
+  color: #555555;
+  font-size: 25px;
+  line-height: 28px;
+}
+.search-filter-nav .dicticon-filter:after {
+  content: "\e613";
+}
+.search-filter-nav.filter-open .dicticon-filter {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/** Styles component - filter list in search box for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+.filter-list {
+  position: absolute;
+  top: 100%;
+  margin: 0 0 0 -2px;
+  width: 100%;
+  padding: 0;
+  background: #ffffff;
+  z-index: 2;
+  cursor: pointer;
+  list-style-type: none;
+  box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.4);
+}
+.filter-list > li {
+  padding: 10px 8px;
+  border-top: 1px solid #e2e2e2;
+  color: #555555;
+  font: 14px Verdana, sans-serif;
+}
+.filter-list > li:hover {
+  background: #f5f5f5;
+  cursor: pointer;
+}
+/** Component styles - leader board (first ad after header) for 2015JulyHeader tablet/desktop **/
+/** Import external dependencies **/
+#header-leaderboard {
+  text-align: center;
+}
+@media (max-width: 767px) {
+  #header-leaderboard {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 991px) {
+  #header-leaderboard {
+    margin-top: 0;
+  }
+}
+@media (min-width: 1199px) {
+  #header-leaderboard {
+    padding-top: 155px;
+    margin-bottom: 20px;
+  }
+}
+/** Component styles - hamburger navigation (sidebar navigation) for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+/** Variables for dictionary iconfont **/
+/** External Dependencies **/
+.ham-nav {
+  -webkit-transform: translate3d(-300px, 0, 0);
+  -moz-transform: translate3d(-300px, 0, 0);
+  -ms-transform: translate3d(-300px, 0, 0);
+  -o-transform: translate3d(-300px, 0, 0);
+  transform: translate3d(-300px, 0, 0);
+  -webkit-transition: -webkit-transform 0.4s ease;
+  -moz-transition: -moz-transform 0.4s ease;
+  -o-transition: -o-transform 0.4s ease;
+  transition: -webkit-transform 0.4s ease,-moz-transform 0.4s ease,-o-transform 0.4s ease,transform 0.4s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 500px;
+  z-index: 6;
+  background-color: #3c7bbe;
+}
+.ham-nav a {
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  color: #f5f5f5;
+  text-decoration: none;
+  /*font: 15px Verdana,sans-serif;*/
+}
+.ham-nav a:hover {
+  color: #66cef6;
+  text-decoration: none;
+}
+.ham-nav > ul,
+.ham-nav .ham-submenu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  padding: 15px 15px 7px 15px;
+}
+.ham-nav .ham-main-menu {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  border-top: 1px solid #66cef6;
+}
+.ham-nav .ham-main-menu:first-child {
+  border: none;
+}
+.ham-nav .ham-main-menu:first-child a {
+  padding-top: 0px;
+}
+.ham-nav .ham-main-menu > a {
+  padding: 18px 0 18px 0;
+  display: block;
+}
+.ham-nav .ham-submenu {
+  padding-top: 0;
+}
+.ham-nav .ham-submenu li {
+  font: 15px Verdana, sans-serif;
+}
+.ham-nav .ham-submenu li a {
+  padding: 8px 0 14px 0;
+  display: block;
+}
+.ham-nav .user-logged-in {
+  display: none;
+}
+.ham-nav .dicticon-header-favourites-star:before {
+  content: "\e616";
+}
+.ham-nav .ham-favourites-number {
+  font-size: 16px;
+}
+.ham-nav .dicticon-header-android,
+.ham-nav .dicticon-header-apple,
+.ham-nav .dicticon-header-favourites-star,
+.ham-nav .ham-favourites-number {
+  float: right;
+  padding-left: 5px;
+}
+.ham-nav .dicticon-header-android:before {
+  content: "\e60e";
+}
+.ham-nav .dicticon-header-apple:before {
+  content: "\e60d";
+}
+.ham-nav .popover.bottom .arrow {
+  left: 31.5%;
+}
+.ham-nav .social-links {
+  float: left;
+  width: 200px;
+  margin: 0;
+  padding-top: 11px;
+  padding-left: 15px;
+  list-style-type: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+.ham-nav .social-links:hover {
+  color: #66cef6;
+}
+.ham-nav .social-links span {
+  color: #f5f5f5;
+}
+.ham-nav .social-follow {
+  margin: 0;
+  padding-left: 15px;
+  list-style-type: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+.ham-nav .social-follow p {
+  text-align: left;
+  padding-top: 7px;
+  font-size: 12px;
+  color: #f5f5f5;
+  clear: both;
+}
+/*
+Used on:
+ - combinedHeader2015July.less
+ - combinedHeader2015JulyMobile.less
+*/
+.social-follow-module {
+  position: absolute;
+  left: -999px;
+}
+.social-follow-btns {
+  padding: 5px 0;
+  list-style: none;
+}
+.social-follow-btns > li {
+  margin-bottom: 15px;
+  height: 20px;
+}
+.social-follow-btns > li:last-child {
+  margin-bottom: 0;
+}
+.social-follow-btns > li .ig-background {
+  border: none;
+}
+.social-follow-btns .fb-like-wrapper {
+  overflow: hidden;
+  height: 21px;
+  width: 90px;
+}
+.social-follow-module p {
+  font-size: 10px;
+  margin-bottom: 0;
+}
+/** Component styles - set styles to slider elements
+*  Used in: 2015JulyHeader tablet/desktop
+**/
+/** Variables for header desktop/tablet **/
+/** Import external dependencies **/
+.slide-element {
+  -webkit-transition: -webkit-transform 0.4s ease;
+  -moz-transition: -moz-transform 0.4s ease;
+  -o-transition: -o-transform 0.4s ease;
+  transition: -webkit-transform 0.4s ease,-moz-transform 0.4s ease,-o-transform 0.4s ease,transform 0.4s ease;
+  position: relative;
+}
+/** Interaction with an user **/
+.body-margin-opened {
+  position: relative;
+  overflow-x: hidden;
+}
+.body-margin-opened .dicticon-hamburger-menu {
+  background-color: #3c7bbe;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+}
+.body-margin-opened .dicticon-hamburger-menu:before {
+  content: "\e617";
+}
+.body-margin-opened .dictionary-header,
+.body-margin-opened .thesaurus-header {
+  -webkit-transform: translate3d(300px, 0, 0);
+  -moz-transform: translate3d(300px, 0, 0);
+  -ms-transform: translate3d(300px, 0, 0);
+  -o-transform: translate3d(300px, 0, 0);
+  transform: translate3d(300px, 0, 0);
+}
+.body-margin-opened .ham-nav {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  left: 0px;
+  width: 301px;
+  z-index: 6;
+}
+@media (min-width: 1200px) {
+  .body-margin-opened .ham-nav {
+    position: fixed;
+  }
+}
+.body-overlay {
+  position: absolute;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
+/** States **/
+/** Component styles - hamburger navigation (sidebar navigation) for 2015JulyHeader tablet/desktop **/
+/** Variables for header desktop/tablet **/
+/** Variables for dictionary iconfont **/
+/** External Dependencies **/
+.dictionary-nav .ham-main-menu:last-child {
+  border-bottom: 1px solid #66cef6;
+}
+.thesaurus-header .header-main-nav > li:last-child {
+  border-right: none;
+}
+/** Imports of all styles in thin footer desktop/tablet. **/
+/** Layout elements **/
+/** Layout - main layout in thin footer desktop/tablet. **/
+/** External Dependencies **/
+/** Variables for thin footer desktop/tablet **/
+/** Variables for thin footer desktop/tablet. **/
+/** Colors **/
+/** Fonts **/
+.footer-thin {
+  padding: 7px 0 15px 0;
+  background-color: #444444;
+  font: 11px Verdana, sans-serif;
+}
+.footer-thin .footer-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.footer-thin .footer-container:before,
+.footer-thin .footer-container:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.footer-thin .footer-container:after {
+  clear: both;
+}
+@media (min-width: 992px) {
+  .footer-thin .footer-container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .footer-thin .footer-container {
+    width: 1170px;
+  }
+}
+.footer-thin .footer-container > div {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.footer-thin .footer-container > div:before,
+.footer-thin .footer-container > div:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.footer-thin .footer-container > div:after {
+  clear: both;
+}
+/** Component elements **/
+/** Component - Copyright style in thin footer desktop/tablet. **/
+/** External Dependencies **/
+/** Variables for thin footer desktop/tablet **/
+.footer-copyright {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #999999;
+}
+@media (min-width: 992px) {
+  .footer-copyright {
+    float: left;
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .footer-copyright {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+@media (max-width: 1199px) {
+  .footer-copyright {
+    padding: 20px 15px 12px 15px;
+    text-align: center;
+  }
+}
+/** Component - Navigation in thin footer desktop/tablet. **/
+/** External Dependencies **/
+/** Variables for thin footer desktop/tablet **/
+.footer-navbar {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 9px;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .footer-navbar {
+    float: left;
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .footer-navbar {
+    float: left;
+    width: 66.66666667%;
+  }
+}
+@media (min-width: 1200px) {
+  .footer-navbar {
+    float: right;
+    text-align: right;
+  }
+}
+.footer-navbar .footer-navbar-list {
+  display: inline-block;
+}
+.footer-navbar .footer-navbar-list > a {
+  line-height: 14px;
+  color: #bbbbbb;
+  padding-right: 15px;
+}
+.footer-navbar .footer-navbar-list > a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.footer-navbar .footer-navbar-list:last-child > a {
+  padding-right: 0;
+}
+.footer-social-links {
+  display: none;
+}
+.footer-follow-text {
+  display: none;
+}
+@media (max-width: 768px) {
+  /** Imports of all styles in thin footer mobile **/
+  /** Layout elements **/
+  /** Layout - main layout in thin footer mobile **/
+  /** Variables for thin footer mobile **/
+  /** Variables for thin footer mobile **/
+  /** Colors **/
+  /** Fonts **/
+  .footer-thin {
+    padding: 7px 0 5px 0;
+    background-color: #444444;
+    font: 11px Verdana, sans-serif;
+  }
+  /** Component elements **/
+  /** Component - Style for social icon in thin footer mobile. **/
+  /** Variables for ionicons **/
+  /*!
+Ionicons, v2.0.0
+Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
+https://twitter.com/benjsperry  https://twitter.com/ionicframework
+MIT License: https://github.com/driftyco/ionicons
+*/
+  /** Styles for ionicons **/
+  @font-face {
+    font-family: "Ionicons";
+    src: url("/web/20171002095051im_/http://static.sfdict.com/sitecore/css/fonts/ionicons/ionicons.eot");
+    src: url("/web/20171002095051im_/http://static.sfdict.com/sitecore/css/fonts/ionicons/ionicons.eot#iefix") format("embedded-opentype"), url("/web/20171002095051im_/http://static.sfdict.com/sitecore/css/fonts/ionicons/ionicons.ttf") format("truetype"), url("/web/20171002095051im_/http://static.sfdict.com/sitecore/css/fonts/ionicons/ionicons.woff") format("woff"), url("/web/20171002095051im_/http://static.sfdict.com/sitecore/css/fonts/ionicons/ionicons.svg#Ionicons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  .ion,
+  .ionicons,
+  [class^="ion-"]:before {
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .ion-social-facebook:before {
+    content: "\f231";
+  }
+  .ion-social-twitter:before {
+    content: "\f243";
+  }
+  .ion-social-googleplus:before {
+    content: "\f235";
+  }
+  .ion-social-instagram:before {
+    content: "\f350";
+  }
+  /** Component - Navigation in thin footer mobile **/
+  /** Variables for thin footer mobile **/
+  .footer-navbar {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .footer-navbar .footer-navbar-list {
+    display: inline-block;
+  }
+  .footer-navbar .footer-navbar-list > a {
+    line-height: 14px;
+    color: #bbbbbb;
+    padding-right: 15px;
+  }
+  .footer-navbar .footer-navbar-list:last-child > a {
+    padding-right: 0;
+  }
+  /** Component - Social Links in thin footer mobile. **/
+  /** Variables for thin footer mobile **/
+  .footer-social-links {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .footer-social-links .social-icon {
+    display: inline-block;
+  }
+  .footer-social-links .social-icon > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 5px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    font-size: 24px;
+    color: #444444;
+  }
+  .footer-social-links .social-icon:last-child > a {
+    margin-right: 0;
+  }
+  /** Component - Follow text style in thin footer mobile. **/
+  /** Variables for thin footer mobile **/
+  .footer-follow-text {
+    padding-bottom: 25px;
+    text-align: center;
+    font: 11px Verdana, sans-serif;
+    color: #999999;
+  }
+  /** Component - Copyright style in thin footer mobile. **/
+  /** Variables for thin footer mobile **/
+  .footer-copyright {
+    padding: 0;
+    color: #999999;
+    text-align: center;
+  }
+  .footer-social-links {
+    display: block;
+  }
+  .footer-follow-text {
+    display: block;
+  }
+}
+body {
+  background: #f5f4f4;
+}
+.container-outer {
+  width: 90%;
+  margin: auto;
+  background: transparent url('/web/20171002095051im_/http://static.sfdict.com/sitecore/css/img/bg-main.png') repeat-y scroll 0 0;
+  position: static;
+}
+.container-outer .center-wrapper {
+  margin-bottom: 113px;
+  position: relative;
+  width: 87%;
+  margin: auto;
+  background: #ffffff;
+}
+.container-outer .center-wrapper .inner-wrapper {
+  width: 88%;
+  margin: 0 auto;
+  text-align: left;
+  background-color: #ffffff;
+}
+.container-outer .center-wrapper .inner-wrapper .content-main {
+  width: auto;
+  top: 0;
+  background-color: #ffffff;
+}
+.terms {
+  color: #333333;
+  padding: 0;
+  margin: 0;
+}
+.terms .main-title {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: normal;
+  padding: 2em 0 0.5em 0;
+  margin: 0;
+}
+.terms .last-updated {
+  float: right;
+}
+.terms h3 {
+  font-weight: bold;
+  margin: 1.5em 0 0.75em;
+  padding: 0;
+  font-size: 14px;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", "Lucida Sans", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+}
+.terms p:not(.last-updated) {
+  font-size: 14px;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", "Lucida Sans", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+}
+.terms p:not(.last-updated) strong {
+  font-weight: bold;
+}
+.policy {
+  color: #333333;
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+}
+.policy .main-title {
+  display: inline-block;
+  font-size: 18px;
+  color: #003366;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-top: 45px;
+}
+.policy .last-updated {
+  float: right;
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 45px;
+}
+.policy ul {
+  font-size: 13px;
+}
+.policy h1 {
+  color: #003366;
+  font-weight: bold;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 18px;
+}
+.policy p:not(.last-updated) {
+  font-size: 13px;
+  margin: 10px 0 0 0;
+}
+.policy p:not(.last-updated) ul {
+  padding: 0 0 0 5px;
+  margin: 0;
+}
+.policy p:not(.last-updated) ul li {
+  background: url("https://web.archive.org/web/20171002095051im_/http://static.sfdict.com/en/i/dictionary/newserp/Sprite_New.png") no-repeat scroll -608px -455px transparent;
+  font-size: 13px;
+  list-style: none outside none;
+  margin-bottom: 0.33em;
+}
+.footer-content-page {
+  clear: both;
+  float: none;
+  width: auto;
+  padding: 0 0 8px 0;
+  position: relative;
+  text-align: left;
+  display: block;
+}
+.footer-content-page .er {
+  position: relative;
+  padding: 10px 0 5px 0;
+  border-top: 1px solid #D6D6D6;
+}
+.footer-content-page .er .fdic {
+  height: 24px;
+  width: 105px;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  background: url('/web/20171002095051im_/http://static.sfdict.com/sitecore/css/img/sh_a.png') no-repeat;
+  background-position-x: -316px;
+  background-position-y: -149px;
+  background-position: -316px -149px;
+  margin-bottom: 5px;
+}
+.column-full {
+  width: 100%;
+}
+.column-50 {
+  width: 48%;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 10px;
+}
+.pronunciation-table th {
+  background: #3c7bbe;
+  color: #FFF;
+  text-align: left;
+  padding: 5px;
+  border: 1px solid #000;
+  border-width: 0 1px 1px 0;
+}
+.pronunciation-table {
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", "Lucida Sans", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+  font-size: 85%;
+  margin: 1em 0 2em;
+  border: 1px solid #000;
+  border-width: 1px 0 0 1px;
+  width: 100%;
+}
+.pronunciation-table td {
+  padding: 5px;
+  border: 1px solid #000;
+  border-width: 0 1px 1px 0;
+}
+.pronunciation-table td.pr {
+  color: #800;
+}
+.info-subtitle {
+  font: 1.25em "Trebuchet MS", sans-serif;
+  padding: 0;
+  text-align: left;
+}
+.info-subtitle p {
+  font: 1em "Trebuchet MS", sans-serif;
+  padding: 0.5em 0 0.5em 27px;
+  margin: 0;
+}
+.info-subtitle p a {
+  text-decoration: none;
+  color: #3c7bbe;
+}
+.info {
+  margin-top: 18px;
+  font-size: 100%;
+  line-height: 1.25em;
+}
+.info h5 {
+  color: #003a66;
+  font: bold 1.1em "Trebuchet MS", Verdana, sans-serif;
+  margin-bottom: 0.33em;
+}
+@media (max-width: 1200px) {
+  .tainer-outer {
+    margin-top: 0 !important;
+  }
+}
+@media (min-width: 1200px) {
+  .container-outer {
+    width: 978px;
+  }
+  .center-wrapper {
+    width: 970px;
+  }
+  .inner-wrapper {
+    width: 944px;
+  }
+  .primary-navigation.navbar {
+    margin-bottom: 0;
+  }
+}
+.navbar {
+  margin-bottom: 0;
+}
+.dicticon-hamburger-menu.slide-element {
+  position: absolute;
+}
+.rss-script-example {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/*
+     FILE ARCHIVED ON 09:50:51 Oct 02, 2017 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:11:10 Oct 27, 2017.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/

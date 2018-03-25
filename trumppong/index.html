@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Trump Pong</title>
+	</head>
+	<body style="margin: 0; background-image: url('flag.gif'); background-size: cover;">
+		<canvas id="canvas" style="display: block">Your browser is not supported.</canvas>
+		<script>
+			function init() {
+				hit = false
+				score = 0
+				asking = false;
+				pxc = 10
+				loses = ["0.mp3", "1.wav"]
+				dead = false
+				audio = new Audio('music.ogg');
+				audio.volume = 0.2
+				audio.play();
+				canvas = document.getElementById("canvas")
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				ctx = canvas.getContext("2d")
+				img = document.createElement("img")
+				img.src = "ball.png"
+				pimg = document.createElement("img")
+				pimg.src = "wall.jpg"
+				bxc = Math.floor(Math.random()*2) ? Math.floor(Math.random()*3)+2 : -Math.floor(Math.random()*3)-2
+				byc = 10
+				bx = canvas.width/2-img.width*0.3/2
+				by = 10
+				px = canvas.width/2-50
+				py = canvas.height-20
+				requestAnimationFrame(update)
+			}
+			function update() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height)
+				ctx.font = "72px Comic Sans MS"
+				ctx.fillStyle = "white"
+				ctx.textAlign = "left"
+				ctx.fillText(score.toString(), canvas.width-100, 100)
+				if ((px-bxc*0.5 < bx+img.width*0.3 && bx+img.width*0.3 < px+270+bxc*0.5) && (by+img.height*0.3 > py) && !hit) {
+					score += 1
+					hit = true
+					new Audio("bing/"+Math.floor(Math.random()*2)+".mp3").play()
+					byc = -byc
+					bxc += (bxc > 0 ? Math.floor(Math.random()*5) : -Math.floor(Math.random()*5))
+				}
+				if ((-5 < by && by < 5)) {
+					hit = false
+					byc = -byc
+					bxc += (bxc > 0 ? Math.floor(Math.random()*5) : -Math.floor(Math.random()*5))
+				}
+				if ((bx < 10)) {
+					hit = false
+					bxc = Math.abs(bxc+(bxc < 0 ? Math.floor(Math.random()*5) : -Math.floor(Math.random()*5)))
+				}
+				if ((bx > canvas.width-img.width*0.3)) {
+					hit = false
+					bxc = -Math.abs(bxc+(bxc < 0 ? Math.floor(Math.random()*5) : -Math.floor(Math.random()*5)))
+				}
+				if (bxc > 20) { bxc = 20 }
+				if (bxc < -20) { bxc = -20}
+				bx += bxc
+				by += byc
+				ctx.drawImage(img, bx, by, img.width*0.3, img.height*0.3);
+				ctx.drawImage(pimg, px, py, 200, 50);
+				if (by > canvas.height && !dead) {
+					audio.pause()
+					var losea = new Audio("lose/"+loses[Math.floor(Math.random()*loses.length)])
+					losea.volume = 1
+					losea.play()
+					dead = true
+					asking = true
+					ctx.font = "200px Comic Sans MS"
+					ctx.fillStyle = "red";
+					ctx.textAlign = "center";
+					ctx.fillText("Oops!", canvas.width/2, canvas.height/2-100)
+					ctx.font = "60px Comic Sans MS"
+					ctx.fillStyle="blue"
+					ctx.fillText("You killed Trump! Press enter to play again.", canvas.width/2, canvas.height/2+50)
+				}
+				if (!dead) { requestAnimationFrame(update) }
+			}
+			init()
+			pxc = 10
+			up = {37: false, 39: false}
+			function move(dir) { //true = left, false = right
+				if (dir) {
+					pxc += 0.05
+					if (px > 0) {px -= pxc}
+					if (!up[37]) {requestAnimationFrame(function() {move(dir)})}
+				}
+				else {
+					pxc += 0.05
+					if (px < canvas.width-100) {px += pxc}
+					if (!up[39]) {requestAnimationFrame(function() {move(dir)})}
+				}
+			}
+			document.addEventListener("keydown", function (e) {
+				switch (e.keyCode) {
+					case 37:
+						up[37] = false;
+						move(true)
+						break;
+					case 39:
+						up[39] = false;
+						move(false)
+						break;
+					case 13:
+						if (asking) { init(); asking = false; }
+						break;
+				}
+			})
+			document.addEventListener("keydown", function (e) {
+				switch (e.keyCode) {
+					case 37:
+						up[37] = true
+						break;
+					case 39:
+						up[39] = true
+						break;
+				}
+			})
+		</script>
+	</body>
+</html>

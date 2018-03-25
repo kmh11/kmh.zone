@@ -1,0 +1,176 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="http://www.iconj.com/ico/k/k/kk66h8j9fa.ico">
+
+  <title>NoPass - a simple, secure, and publicly verifiable password manager for the 21st century.</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="jumbotron.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style>
+  body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+  body{
+  padding:70px 20px;
+}
+
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+
+.counter{
+  padding:8px;
+  color:#ccc;
+}
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" style="margin-left: 0;">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="/nopass/">NoPass</a>
+        <a class="navbar-brand" style="cursor: arrow;">&emsp;</a>
+        <a class="navbar-brand" href="/nopass/manager">Manager</a>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </nav>
+
+  <div class="form-group">
+    <label for="username">Username: </label><input type="text" class="form-control" id="username"><br>
+    <label for="password">Password: </label><input type="text" class="form-control" id="password"><br>
+    <label for="service">Service: </label><input type="text" class="form-control" id="service"><br>
+    <button type="button" class="btn" onclick="addLogin()">Add Login</button>
+  </div>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="form-group pull-right">
+      <input type="text" class="search form-control" placeholder="What you looking for?">
+  </div>
+  <span class="counter pull-right"></span>
+  <table class="table table-hover table-bordered results">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th class="col-md-5 col-xs-5">Username</th>
+        <th class="col-md-4 col-xs-4">Password</th>
+        <th class="col-md-3 col-xs-3">Service</th>
+      </tr>
+      <tr class="warning no-result">
+        <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+      </tr>
+    </thead>
+    <tbody id="passtable">
+    </tbody>
+  </table>
+  <!-- /container -->
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDWiD6OG4oyt_snbgUvSKWJGMS-Pq0DclQ",
+      authDomain: "nopass-4ee12.firebaseapp.com",
+      databaseURL: "https://nopass-4ee12.firebaseio.com",
+      projectId: "nopass-4ee12",
+      storageBucket: "nopass-4ee12.appspot.com",
+      messagingSenderId: "745051162379"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+  </script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script>
+  $(document).ready(function() {
+  $(".search").keyup(function () {
+    var searchTerm = $(".search").val();
+    var listItem = $('.results tbody').children('tr');
+    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+  $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+    }
+  });
+
+  $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+    $(this).attr('visible','false');
+  });
+
+  $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+    $(this).attr('visible','true');
+  });
+
+  var jobCount = $('.results tbody tr[visible="true"]').length;
+    $('.counter').text(jobCount + ' item');
+
+  if(jobCount == '0') {$('.no-result').show();}
+    else {$('.no-result').hide();}
+		  });
+  });
+  function reload() {
+    document.getElementById("passtable").innerHTML = ""
+    db = firebase.database()
+    ref = db.ref("/")
+    ref.once("value").then(function(snap) {
+      entries = snap.val()
+      count = 1
+      for (e in entries) {
+        document.getElementById("passtable").innerHTML += "<tr><th scope='row'>"+count+"</th><td>"+entries[e].username+"</td><td>"+entries[e].password+"</td><td>"+entries[e].service+"</td></tr>"
+        count++
+      }
+    })
+  }
+  reload()
+  function addLogin() {
+    username = document.getElementById("username").value
+    password = document.getElementById("password").value
+    service = document.getElementById("service").value
+    ref.push({username: username, password: password, service: service})
+    reload()
+  }
+  </script>
+</body>
+
+</html>

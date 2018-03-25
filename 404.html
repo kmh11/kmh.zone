@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>404 Not Found</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			@font-face {
+				font-family: "Twilight Zone";
+				src: url("assets/fonts/twilight.ttf");
+			}
+
+			html, body {
+				margin: 0;
+				padding: 0;
+				background-color: black;
+			}
+
+			.zone {
+				padding: 1em;
+				color: gray;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: calc(100vw - 2em);
+			}
+
+			a {
+				color: white;
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			.zone h1 {
+				color: white;
+				font-family: "Twilight Zone";
+				font-size: 10vw;
+				text-align: center;
+				font-weight: normal;
+			}
+
+			div {
+				font-size: 1.5em;
+				font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+				font-weight: normal;
+				text-align: center;
+			}
+
+			@media only screen and (max-width: 768px) {
+				.zone h1 {
+					font-size: 15vw;
+				}
+				div {
+					font-size: 20px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="zone">
+			<div>Whoops! Looks like you've stumbled upon...</div>
+			<h1>The<br>Kmh.Zone</h1>
+			<div>Here you will find a land of both shadow and substance... but no web page. Maybe try the <a href="/">home page</a>?</div>
+		</div>
+	</body>
+</html>

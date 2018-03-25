@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="generator.js"></script>
+    <script type="text/javascript" src="presets.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://use.typekit.net/api8bev.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <title>Generate Quotes</title>
+  </head>
+  <body onload="fillElements()">
+    <h1>Quote Generator</h1>
+    <h2>Choose a preset or copy and paste source text in the box below. Then click generate quote to generate a quote in the style of that text!</h2>
+    <textarea onchange="setCustom()" id="sourceText"></textarea><br>
+    <div class="centerLine">
+      <label for="sanity" id="sanityLabel">Sanity:</label>
+      <input type="range" min="1" max="3" value="2" step="1" id="sanity"><br>
+      <label for="preset">Text preset:</label>
+      <select id="preset" onchange="fillText()">
+        <option value="custom">Custom</option>
+        <option value="callofcthulhu">The Call of Cthulhu by H.P. Lovecraft</option>
+        <option value="quotes">Deep quotes</option>
+        <option value="trumptweets">Tweets by Donald Trump</option>
+      </select>
+      <button onclick="buttonClick()" id="makeSentence">Generate quote!</button>
+    </div>
+    <footer>&copy; 2016 Kevin Higgs | <a id="kmhzone" href="http://kmh.zone">Other projects</a></footer>
+  </body>
+</html>
