@@ -15,7 +15,7 @@ spell = function() {
     spellWord(word)
   } else {
     document.getElementsByClassName("wotdHolder_box")[0].innerHTML = "<p id='wotdDesc' class='wotdHolder_word wotdHolder_word-small' style='padding: 0; margin: 0;'><i>Spelling.com</i> Word Of Tomorrow:</p><br>"+document.getElementsByClassName("wotdHolder_box")[0].innerHTML
-    $jsonp.send('http://restcdn.dictionary.com/v2/wordoftheday.jsonp?api_key=KgprXEYKVnNSFSZ&past=0&future=1&crossDomain=true&dataType=jsonp&year='+date.getUTCFullYear()+'&month='+(date.getUTCMonth()+1)+'&day='+date.getUTCDate()+'&callback=jQuery21405083950325741895_1487445622479', {        callbackName: 'jQuery21405083950325741895_1487445622479',
+    $jsonp.send('/api/wordoftheday.jsonp?api_key=KgprXEYKVnNSFSZ&past=0&future=1&crossDomain=true&dataType=jsonp&year='+date.getUTCFullYear()+'&month='+(date.getUTCMonth()+1)+'&day='+date.getUTCDate()+'&callback=jQuery21405083950325741895_1487445622479', {        callbackName: 'jQuery21405083950325741895_1487445622479',
         onSuccess: function(json){
             wotd = json.wordoftheday.results[tomorrow.getUTCFullYear()+"-"+("0"+(tomorrow.getUTCMonth()+1)).slice(-2)+"-"+("0"+(tomorrow.getUTCDate())).slice(-2)].word;
             spellWord(wotd)
