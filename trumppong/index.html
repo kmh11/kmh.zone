@@ -6,6 +6,9 @@
 	<body style="margin: 0; background-image: url('flag.gif'); background-size: cover;">
 		<canvas id="canvas" style="display: block">Your browser is not supported.</canvas>
 		<script>
+			canvas = document.getElementById("canvas")
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
 			ctx = canvas.getContext("2d")
 			function init() {
 				hit = false
@@ -17,9 +20,6 @@
 				audio = new Audio('music.ogg');
 				audio.volume = 0.2
 				audio.play();
-				canvas = document.getElementById("canvas")
-				canvas.width = window.innerWidth;
-				canvas.height = window.innerHeight;
 				img = document.createElement("img")
 				img.src = "ball.png"
 				pimg = document.createElement("img")
@@ -81,15 +81,6 @@
 				}
 				if (!dead) { requestAnimationFrame(update) }
 			}
-			dead = true
-			asking = true
-			ctx.font = "200px Comic Sans MS"
-			ctx.fillStyle = "red";
-			ctx.textAlign = "center";
-			ctx.fillText("Trump Pong", canvas.width/2, canvas.height/2-100)
-			ctx.font = "60px Comic Sans MS"
-			ctx.fillStyle="blue"
-			ctx.fillText("Press enter to start playing.", canvas.width/2, canvas.height/2+50)
 
 			pxc = 10
 			up = {37: false, 39: false}
@@ -130,6 +121,16 @@
 						break;
 				}
 			})
+			
+			dead = true
+			asking = true
+			ctx.font = "200px Comic Sans MS"
+			ctx.fillStyle = "red";
+			ctx.textAlign = "center";
+			ctx.fillText("Trump Pong", canvas.width/2, canvas.height/2-100)
+			ctx.font = "60px Comic Sans MS"
+			ctx.fillStyle="blue"
+			ctx.fillText("Press enter to start playing.", canvas.width/2, canvas.height/2+50)
 		</script>
 	</body>
 </html>
