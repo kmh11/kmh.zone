@@ -86,12 +86,10 @@
 			up = {37: false, 39: false}
 			function move(dir) { //true = left, false = right
 				if (dir) {
-					pxc += 0.05
 					if (px > 0) {px -= pxc}
 					if (!up[37]) {requestAnimationFrame(function() {move(dir)})}
 				}
 				else {
-					pxc += 0.05
 					if (px < canvas.width-100) {px += pxc}
 					if (!up[39]) {requestAnimationFrame(function() {move(dir)})}
 				}
