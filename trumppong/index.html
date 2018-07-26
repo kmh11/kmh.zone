@@ -6,6 +6,7 @@
 	<body style="margin: 0; background-image: url('flag.gif'); background-size: cover;">
 		<canvas id="canvas" style="display: block">Your browser is not supported.</canvas>
 		<script>
+			ctx = canvas.getContext("2d")
 			function init() {
 				hit = false
 				score = 0
@@ -19,7 +20,6 @@
 				canvas = document.getElementById("canvas")
 				canvas.width = window.innerWidth;
 				canvas.height = window.innerHeight;
-				ctx = canvas.getContext("2d")
 				img = document.createElement("img")
 				img.src = "ball.png"
 				pimg = document.createElement("img")
