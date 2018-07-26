@@ -97,10 +97,12 @@
 			document.addEventListener("keydown", function (e) {
 				switch (e.keyCode) {
 					case 37:
+						if (!up[37]) break
 						up[37] = false;
 						move(true)
 						break;
 					case 39:
+						if (!up[39]) break
 						up[39] = false;
 						move(false)
 						break;
