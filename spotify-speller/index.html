@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Spotify Speller</title>
+		<link rel="stylesheet" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	</head>
+	<body>
+		<h1>Spotify Speller</h1>
+		<div class="notloggedin">
+		<button onclick="login()" class="centerbutton">LOG IN</button>
+		<h2>Send messages with Spotify playlists!</h2>
+		</div>
+		<div class="loggedin" style="display: none">
+		<label>Enter playlist name:</label>
+		<input type="text" placeholder="Playlist name" id="playlistname">
+		<label>Message to write:</label>
+		<textarea placeholder="Sentence" id="sentenceInput"></textarea>
+		<button onclick="spell()" id="spellbtn">SPELL</button></div>
+		<div class="spinner" style="display: none">
+		  <div class="bounce1"></div>
+		  <div class="bounce2"></div>
+		  <div class="bounce3"></div>
+		</div>
+		<div class="failure" style="display: none;">
+			<h2>Failed to Write Message</h2>
+			<p>Spotify Speller could not find a way to write your message. Here are some suggestions:</p>
+			<ul>
+				<li>Make sure all words are spelled correctly/would appear in song titles (things like 'ur' are okay)
+				<li>Don't use punctuation unless it would be used in a song title (eg. 'Mr.')
+				<li>Try rephrasing your message slightly or removing/replacing less common words
+			</ul><br>
+			<button onclick="location.href = '/#access_token=' + token; location.reload()" class="retrybutton">TRY AGAIN</button>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
