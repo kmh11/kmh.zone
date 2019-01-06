@@ -54,13 +54,15 @@ function spell () {
 	finished = false
 	playlistname = $('#playlistname').val()
 	var sentence = $('#sentenceInput').val().split(' ')
-	$('#playlistname').val('')
-	$('#sentenceInput').val('')
-	var spelt = 0
-	var offset = 0
-	$('.loggedin').css('display', 'none')
-	$('.spinner').css('display', 'block')
-	_spell(sentence, spelt, sentence.length, offset, spelt)
+	if (sentence && playlistname) {
+		$('#playlistname').val('')
+		$('#sentenceInput').val('')
+		var spelt = 0
+		var offset = 0
+		$('.loggedin').css('display', 'none')
+		$('.spinner').css('display', 'block')
+		_spell(sentence, spelt, sentence.length, offset, spelt)
+	}
 }
 
 function finishedSpelling() {
