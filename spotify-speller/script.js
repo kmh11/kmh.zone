@@ -7,7 +7,7 @@ var sentenceTracks = []
 var finished = false
 
 function login () {
-	location.href = 'https://accounts.spotify.com/authorize?' + $.param({ client_id: CLIENT_ID, response_type: 'token', redirect_uri: 'http://localhost:8888', scope: 'playlist-modify-public' })
+	location.href = 'https://accounts.spotify.com/authorize?' + $.param({ client_id: CLIENT_ID, response_type: 'token', redirect_uri: location.origin, scope: 'playlist-modify-public' })
 }
 
 function search (query, offset, callback) {
