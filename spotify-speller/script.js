@@ -27,7 +27,7 @@ function checkTracks (sentence, spelt, i, offset, orig_spelt, finish) {
 		var tracks = data.items
 		for (var t = 0; t < tracks.length; t++) {
 			var track = tracks[t]
- 			if (track.name.toLowerCase() === sentence.slice(spelt, i).join(' ').toLowerCase() || track.name.toLowerCase().split(' - ')[0].split('(')[0] === sentence.slice(spelt, i).join(' ').toLowerCase()) {
+ 			if (track.name.toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') || track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')) {
 				sentenceTracks.push(track)
 				spelt = i
 				offset = 0
@@ -53,7 +53,7 @@ function spell () {
 	sentenceTracks = []
 	finished = false
 	playlistname = $('#playlistname').val()
-	var sentence = $('#sentenceInput').val().split(' ')
+	var sentence = $('#sentenceInput').val().trim().split(' ')
 	if (sentence && playlistname) {
 		$('#playlistname').val('')
 		$('#sentenceInput').val('')
