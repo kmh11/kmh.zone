@@ -3,6 +3,8 @@ var token
 var id
 var playlistname
 
+var memory = {}
+
 var sentenceTracks = []
 var finished = false
 
@@ -21,31 +23,47 @@ function search (query, offset, callback) {
 	})
 }
 
-function checkTracks (sentence, spelt, i, offset, orig_spelt, finish) {
-	console.log(sentence.slice(spelt, i))
+function checkTracks (sentence, spelt, i, offset, orig_spelt, finish, nwords) {
+	if (memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')]) {
+		sentenceTracks.push(memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')])
+		spelt = i
+		offset = 0
+		finish(sentence, spelt, offset)
+	}
 	search(sentence.slice(spelt, i).join(' '), offset, function (data) {
 		var tracks = data.items
 		for (var t = 0; t < tracks.length; t++) {
 			var track = tracks[t]
  			if (track.name.toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') || track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')) {
+ 				memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] = track
 				sentenceTracks.push(track)
 				spelt = i
 				offset = 0
 				break
 			}
 		}
-		if (spelt > orig_spelt) finish(sentence, spelt, i, offset, orig_spelt)
-		else if (i-1 > spelt) checkTracks(sentence, spelt, i-1, offset, orig_spelt, finish)
-		else if (offset > 1000) {
-			$('.spinner').css('display', 'none')
-			$('.failure').css('display', 'block')
+		if (spelt > orig_spelt) finish(sentence, spelt, offset)
+		else if (i-1 > spelt) checkTracks(sentence, spelt, i-1, offset, orig_spelt, finish, nwords)
+		else if (memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] === null || offset > 1000) {
+			var track = sentenceTracks.pop()
+			if (!track || track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length === 1) {
+				$('.spinner').css('display', 'none')
+				$('.failure').css('display', 'block')
+			} else {
+				memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] = null
+				spelt -= track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length
+				if (track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length <= 1) numwords = undefined
+				else numwords = track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length - 1
+				_spell(sentence, spelt, 0, numwords)
+			}
 		}
-		else finish(sentence, spelt, i, offset + 50, orig_spelt)
+		else finish(sentence, spelt, offset + 50, nwords)
 	})
 }
 
-function _spell (sentence, spelt, i, offset, orig_spelt) {
- 	if (spelt < sentence.length) checkTracks(sentence, spelt, sentence.length, offset, spelt, _spell)
+function _spell (sentence, spelt, offset, numwords) {
+	if (numwords === undefined) numwords = 7
+ 	if (spelt < sentence.length) checkTracks(sentence, spelt, Math.min(sentence.length, spelt+numwords), offset, spelt, _spell, numwords)
  	else if (!finished) finishedSpelling()
 }
 
@@ -53,7 +71,7 @@ function spell () {
 	sentenceTracks = []
 	finished = false
 	playlistname = $('#playlistname').val()
-	var sentence = $('#sentenceInput').val().trim().split(' ')
+	var sentence = $('#sentenceInput').val().trim().split(/\s+/)
 	if (sentence && playlistname) {
 		$('#playlistname').val('')
 		$('#sentenceInput').val('')
@@ -61,18 +79,12 @@ function spell () {
 		var offset = 0
 		$('.loggedin').css('display', 'none')
 		$('.spinner').css('display', 'block')
-		_spell(sentence, spelt, sentence.length, offset, spelt)
+		_spell(sentence, spelt, offset)
 	}
 }
 
 function finishedSpelling() {
 	finished = true
-	for (var i = 0; i < sentenceTracks.length; i++) {
-		var li = $("<li></li>")
-		li.text(sentenceTracks[i].name + " - " + sentenceTracks[i].artists[0].name)
-		console.log(li)
-		$('#tracks').append(li)
-	}
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {
