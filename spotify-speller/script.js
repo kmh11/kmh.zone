@@ -3,8 +3,6 @@ var token
 var id
 var playlistname
 
-var memory = {}
-
 var sentenceTracks = []
 var finished = false
 
@@ -35,8 +33,8 @@ function checkTracks (sentence, spelt, i, offset, orig_spelt, finish, nwords) {
 		for (var t = 0; t < tracks.length; t++) {
 			var track = tracks[t]
  			if (track.name.toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') || track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')) {
- 				memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] = track
-				sentenceTracks.push(track)
+ 				memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] = track.uri
+				sentenceTracks.push(track.uri)
 				spelt = i
 				offset = 0
 				break
@@ -99,7 +97,7 @@ function finishedSpelling() {
 function addTracks(playlist) {
 	$.ajax({
 		method: 'post',
-		url: 'https://api.spotify.com/v1/playlists/' + playlist + '/tracks?uris=' + sentenceTracks.map(t => t.uri).join(','),
+		url: 'https://api.spotify.com/v1/playlists/' + playlist + '/tracks?uris=' + sentenceTracks.join(','),
 		headers: {
 			'Authorization': 'Bearer ' + token
 		}
