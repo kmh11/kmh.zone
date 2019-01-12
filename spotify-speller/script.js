@@ -51,6 +51,7 @@ function checkTracks (sentence, spelt, i, offset, orig_spelt, finish, nwords, do
 		if (spelt > orig_spelt) finish(sentence, spelt, offset)
 		else if (i-1 > spelt) checkTracks(sentence, spelt, i-1, offset, orig_spelt, finish, nwords)
 		else if (i-1 === spelt && !dots) checkTracks(sentence, spelt, i, offset, orig_spelt, finish, nwords, true)
+		else if (i-1 === spelt && sentence[spelt].indexOf("'s") !== -1 && sentence[spelt].indexOf("'s") === sentence[spelt].length - 2) checkTracks(sentence.slice(0, spelt).concat([sentence[spelt].slice(0, sentence[spelt].length - 2), 'is']).concat(sentence.slice(spelt+1)), spelt, i, offset, orig_spelt, finish, nwords)
 		else if (memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] === null || offset > 1000) {
 			var track = sentenceTracks.pop()
 			if (!track || getTrackName(track).toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length === 1) {
@@ -104,14 +105,22 @@ function finishedSpelling() {
 }
 
 function addTracks(playlist) {
+	var split = false
+	if (sentenceTracks.length >= 100) {
+		split = true
+	}
 	$.ajax({
 		method: 'post',
-		url: 'https://api.spotify.com/v1/playlists/' + playlist + '/tracks?uris=' + sentenceTracks.join(','),
+		url: 'https://api.spotify.com/v1/playlists/' + playlist + '/tracks?uris=' + sentenceTracks.slice(0, Math.min(sentenceTracks.length, 100)).join(','),
 		headers: {
 			'Authorization': 'Bearer ' + token
 		}
 	}).done(function (data) {
 		location.href = 'https://open.spotify.com/user/'+id+'/playlist/'+playlist
+		if (split) {
+			sentenceTracks = sentenceTracks.slice(100)
+			addTracks(playlist)
+		}
 	})
 }
 
