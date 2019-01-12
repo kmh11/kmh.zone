@@ -21,18 +21,26 @@ function search (query, offset, callback) {
 	})
 }
 
-function checkTracks (sentence, spelt, i, offset, orig_spelt, finish, nwords) {
+function getTrackName(uri) {
+	var request = new XMLHttpRequest();
+	request.open('GET', 'https://api.spotify.com/v1/tracks/'+uri.split(':')[2], false)
+	request.setRequestHeader('Authorization', 'Bearer ' + token)
+	request.send(null);
+	return JSON.parse(request.responseText).name
+}
+
+function checkTracks (sentence, spelt, i, offset, orig_spelt, finish, nwords, dots) {
 	if (memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')]) {
 		sentenceTracks.push(memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')])
 		spelt = i
 		offset = 0
 		finish(sentence, spelt, offset)
 	}
-	search(sentence.slice(spelt, i).join(' '), offset, function (data) {
+	search(!dots ? sentence.slice(spelt, i).join(' ') : sentence.slice(spelt, i).join(' ').split('').join('.'), offset, function (data) {
 		var tracks = data.items
 		for (var t = 0; t < tracks.length; t++) {
 			var track = tracks[t]
- 			if (track.name.toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') || track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')) {
+ 			if (track.name.toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '') || track.name.toLowerCase().split(' - ')[0].split(' (')[0].replace(/[^0-9a-zA-Z ]/g, '') === sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')) {
  				memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] = track.uri
 				sentenceTracks.push(track.uri)
 				spelt = i
@@ -42,16 +50,17 @@ function checkTracks (sentence, spelt, i, offset, orig_spelt, finish, nwords) {
 		}
 		if (spelt > orig_spelt) finish(sentence, spelt, offset)
 		else if (i-1 > spelt) checkTracks(sentence, spelt, i-1, offset, orig_spelt, finish, nwords)
+		else if (i-1 === spelt && !dots) checkTracks(sentence, spelt, i, offset, orig_spelt, finish, nwords, true)
 		else if (memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] === null || offset > 1000) {
 			var track = sentenceTracks.pop()
-			if (!track || track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length === 1) {
+			if (!track || getTrackName(track).toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length === 1) {
 				$('.spinner').css('display', 'none')
 				$('.failure').css('display', 'block')
 			} else {
 				memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] = null
-				spelt -= track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length
-				if (track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length <= 1) numwords = undefined
-				else numwords = track.name.toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length - 1
+				spelt -= getTrackName(track).toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length
+				if (getTrackName(track).toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length <= 1) numwords = undefined
+				else numwords = getTrackName(track).toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length - 1
 				_spell(sentence, spelt, 0, numwords)
 			}
 		}
