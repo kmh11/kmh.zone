@@ -52,7 +52,7 @@ function checkTracks (sentence, spelt, i, offset, orig_spelt, finish, nwords, do
 		else if (i-1 > spelt) checkTracks(sentence, spelt, i-1, offset, orig_spelt, finish, nwords)
 		else if (i-1 === spelt && !dots) checkTracks(sentence, spelt, i, offset, orig_spelt, finish, nwords, true)
 		else if (i-1 === spelt && sentence[spelt].indexOf("'s") !== -1 && sentence[spelt].indexOf("'s") === sentence[spelt].length - 2) checkTracks(sentence.slice(0, spelt).concat([sentence[spelt].slice(0, sentence[spelt].length - 2), 'is']).concat(sentence.slice(spelt+1)), spelt, i, offset, orig_spelt, finish, nwords)
-		else if (memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] === null || offset > 1000) {
+		else if (memory[sentence.slice(spelt, i).join(' ').toLowerCase().replace(/[^0-9a-zA-Z ]/g, '')] === null || offset > 5000) {
 			var track = sentenceTracks.pop()
 			if (!track || getTrackName(track).toLowerCase().split(' - ')[0].split('(')[0].replace(/[^0-9a-zA-Z ]/g, '').split(' ').length === 1) {
 				$('.spinner').css('display', 'none')
