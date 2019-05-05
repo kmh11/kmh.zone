@@ -38,12 +38,13 @@ main {
 	text-decoration: none;
 	color: inherit;
 	box-shadow: inset 0 0 0 100em rgba(255, 255, 255, 0.8);
-	background-image: url(assets/bg.jpg);
+	background-image: url(bg.jpg);
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	border-color: black;
+	border-radius: 0.15em;
 }
 
 .col img {
@@ -70,6 +71,7 @@ main {
 
 .big .col {
 	font-size: 2em;
+	height: 3.5em;
 }
 
 .col {
@@ -109,6 +111,12 @@ h1 {
 	margin-top: 0.6em;
 }
 
+@media only screen and (max-width: 1500px) {
+	.small .col {
+		font-size: 0.8em;
+	}
+}
+
 @media only screen and (max-width: 1100px) {
 	.grid {
     	display: block;
@@ -121,5 +129,8 @@ h1 {
 @media only screen and (max-width: 500px) {
 	main {
 		padding: 1em 2em;
+	}
+	.big .col {
+		height: 4em;
 	}
 }
