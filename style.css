@@ -44,7 +44,7 @@ main {
 .col {
 	flex: 1;
 	height: 3em;
-	border-style: inset;
+	border-style: solid;
 	border-width: 1px;
 	margin: 2rem 0 0 2rem;
 	padding: 1em;
