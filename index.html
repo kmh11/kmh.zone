@@ -2,91 +2,54 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
 		<title>kmh.zone</title>
 		<link rel="stylesheet" href="https://use.typekit.net/otr7kvf.css">
-		<link rel="stylesheet" type="text/css" href="projects.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
-		<div class="title-page" id="top"><div class="title-wrapper"><h1 class="title"><span id="kmh">kmh</span>/<span id="zone">zone</span></h1></div></div>
-		<a href="#projects" class="arrowlink" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});return false"><svg class="arrow"><path class="a1" d="M0 0 L25 32 L50 0"></path></svg></a>
-		<div class="projects-page" id="projects">
-			<table id="links">
-				<tr>
-					<td>
-						<div class="bg">
-							<a href="http://chemspeller.com"><img src="assets/images/chemspeller.png" id="chemlogo"></a>
-						</div>
-					</td>
-					<td>
-						<div class="bg">
-							<a id="quotes" class="link" href="https://quotes.kmh.zone"><span class="quotations">&ldquo;</span>Quote Generator<span class="quotations">&rdquo;</span></a>
-						</div>
-					</td>
-				<tr>
-					<td>
-						<div class="bg">
-							<a class="link" id="clickerlink" href="https://clicker.kmh.zone"><span id="clicker">Clicker Clicker</span><img id="arrow" src="assets/images/arrow.svg"></img></a>
-						</div>
-					</td>
-					<td>
-						<div class="bg">
-							<a class="link" id="clicklink" href="https://click.kmh.zone"><span id="click">Click Speed Test</span><img id="cursor" src="assets/images/cursor.svg"></img></a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="bg">
-							<a class="link" id="spellinglink" href="https://spelling.kmh.zone"><img id="spellinglogo" src="assets/images/spellinglogo.png" alt="Spelling.com logo"></img></a>
-						</div>
-					</td>
-					<td>
-						<div class="bg">
-							<a class="link" href="https://translate.kmh.zone"><span class="translate">Translate Telephone</span></img></a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="bg">
-							<a class="link" href="https://music.kmh.zone"><span class="music">Music Visualizer</span></a>
-						</div>
-					</td>
-					<td>
-						<div class="bg">
-							<a class="link" href="/trumppong"><img src="/trumppong/ball.png" class="trumphead"></img><span class="trumptext"><span style="color: red">Trump</span> <span style="color: blue">Pong</span></span></a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="bg">
-							<a class="link" href="/connectfour"><span class="connect4"><span style="color: black">Connect </span><span style="color: #ba1010">4</span></span><img src="assets/images/ps.svg" id ="psimg"></a>
-						</div>
-					</td>
-					<td>
-						<div class="bg">
-							<a class="link" href="/roguelike"><span style="color: darkred; font-family: sans-serif;">Roguelike</span></a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="bg">
-							<a class="link" id="flickrlink" href="https://www.flickr.com/photos/kevin117"><span id="flickruser">Kevin 117<span class="at">@</span></span><img id="flickrlogo" src="assets/images/flickr.png" alt="Flickr Logo"></a>
-						</div>
-					</td>
-					<td>
-						<div class="bg">
-							<a class="link" id="gitlink" href="https://github.com/kmh11"><span id="gituser">kmh11<span class="at">@</span></span><img id="gitlogo" src="assets/images/GitHub_Logo.png" alt="Github Logo"><img id="octocat" src="assets/images/Octocat.png" alt="Octocat"></a>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="bg-overlay"></div>
-		<script src="scroll.js"></script>
+		<main>
+			<h1>kmh<span class="subtitle">.zone</span></h1>
+			<hr>
+			<section>
+				<p>I'm kmh, although you may also find me online as kmh11 (three letter usernames are hard). You'll find a couple links to things I'm proud of below. Below that, you'll find many more links to things I'm not so proud of.</p>
+				<div class="grid big">
+					<a class="col" href="https://angstromctf.com">
+						<h4>ångstromCTF</h4>
+						<p>A cybersecurity competition for high schoolers.</p>
+					</a>
+					<a class="col" href="https://keyster.io">
+						<h4>Keyster</h4>
+						<p>A simple, secure password manager.</p>
+					</a></div>
+				</div>
+				<div class="grid medium">
+					<a class="col" href="https://github.com/kmh11">GitHub</a>
+					<a class="col" href="https://kmh.zone/writeups">CTF Writeups</a>
+					<a class="col" href="https://woottoncommonsense.com/2018/12/10/leaked-second-semester-schedules-induce-excitement/">In The News</a></div>
+				</div>
+				<div class="grid small">
+					<a class="col" href="https://chemspeller.com"><img src="assets/links/chemspeller.png"></a>
+					<a class="col" href="https://spotify.kmh.zone"><img src="assets/links/spotify.png"></a>
+					<a class="col" href="https://clicker.kmh.zone"><img src="assets/links/clicker.png"></a>
+					<a class="col" href="https://kmh.zone/trumppong"><img src="assets/links/trump.png"></a></div>
+				</div>
+				<div class="grid small">
+					<a class="col" href="https://click.kmh.zone"><img src="assets/links/click.png"></a>
+					<a class="col" href="https://spelling.kmh.zone"><img src="assets/links/spelling.png"></a>
+					<a class="col noto" href="https://kmh.zone/nopass"><span>NoPass</span></a>
+					<a class="col" href="https://music.kmh.zone"><img src="assets/links/music.png"></a></div>
+				</div>
+				<div class="grid small">
+					<a class="col" href="https://quotes.kmh.zone"><img src="assets/links/quote.png"></a>
+					<a class="col" href="https://kevinhiggs.com"><span>kevinhiggs.com</span></a>
+					<a class="col noto" style="color: darkred" href="https://kmh.zone/roguelike"><span>Roguelike</span></a>
+					<a class="col" href="https://kmh.zone/connectfour"><img src="assets/links/connectfour.png"></a></div>
+				</div>
+			</section>
+		</main>
+		<div class="bg"></div>
+		<div class="overlay"></div>
 	</body>
-	<!-- -->
 </html>
