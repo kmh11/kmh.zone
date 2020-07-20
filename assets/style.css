@@ -33,13 +33,13 @@ body {
 	position: absolute;
 	height: 5em;
 	top: -5em;
-	left: calc(50% - 4em);
+	left: 50%;
+	transform: translateX(-50%);
 	transition: top 2s;
 }
 
 #molangheart.center {
-	top: 8em;
-	left: calc(50% - 4em);
+	top: 1.5em;
 }
 
 #molang.done {
